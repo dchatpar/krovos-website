@@ -1,0 +1,28 @@
+{
+  "extractor": {
+    "base-directory": "./public/images/",
+    "unsplash": {
+      "access-key": "${UNSPLASH_ACCESS_KEY}",
+      "format": "raw"
+    },
+    "pexels": {
+      "api-key": "${PEXELS_API_KEY}",
+      "size": "large2x"
+    },
+    "pixabay": {
+      "api-key": "${PIXABAY_API_KEY}",
+      "image-width": ">=1920",
+      "image-height": ">=1080"
+    }
+  },
+  "output": {
+    "directory": ["{category}", "{subcategory}"],
+    "filename": "{category}_{filename}.{extension}"
+  },
+  "postprocessor": {
+    "exec": {
+      "command": "python scripts/watermark-check.py '{}'",
+      "event": "after"
+    }
+  }
+}
