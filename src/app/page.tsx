@@ -240,32 +240,39 @@ export default function Home() {
                   ))}
                 </div>
                 
-                <div className="mb-4 flex items-center">
-                  <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-secondary-500">
-                    <span className="text-lg font-semibold text-white">
-                      {testimonial.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
+                 <div className="mb-4 flex items-center">
+                   <div className="mr-4 h-12 w-12 overflow-hidden rounded-full border-2 border-white dark:border-gray-800">
+                     <img 
+                       src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${testimonial.name.replace(/\s+/g, '')}`}
+                       alt={testimonial.name}
+                       className="h-full w-full object-cover"
+                     />
+                   </div>
+                   <div>
+                     <h4 className="font-semibold text-gray-900 dark:text-white">
+                       {testimonial.name}
+                     </h4>
+                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                       {testimonial.role}
+                     </p>
+                   </div>
+                 </div>
                 
                 <p className="mb-6 text-gray-700 dark:text-gray-300 italic">
                   "{testimonial.content}"
                 </p>
                 
-                <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {testimonial.company}
-                  </span>
-                  <MessageSquare className="h-5 w-5 text-gray-400" />
-                </div>
+                 <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                   <div className="flex items-center">
+                     <div className="mr-2 h-6 w-6 rounded bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
+                       <span className="text-xs font-bold text-white">{testimonial.company.charAt(0)}</span>
+                     </div>
+                     <span className="text-sm font-medium text-gray-900 dark:text-white">
+                       {testimonial.company}
+                     </span>
+                   </div>
+                   <MessageSquare className="h-5 w-5 text-gray-400" />
+                 </div>
               </Card>
             ))}
           </div>
