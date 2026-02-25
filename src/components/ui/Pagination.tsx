@@ -69,7 +69,7 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
     
     const buttonStyles = 'flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium transition-colors'
     const activeStyles = 'bg-primary-500 text-white hover:bg-primary-600'
-    const inactiveStyles = 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+    const inactiveStyles = 'text-gray-700 hover:bg-gray-100'
     const disabledStyles = 'opacity-50 cursor-not-allowed'
     
     return (

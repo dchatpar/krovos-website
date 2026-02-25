@@ -64,14 +64,14 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         style={{ left: coords.x, top: coords.y }}
       >
         <div className={cn(
-          'absolute whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1.5 text-sm text-white shadow-lg dark:bg-gray-800',
+          'absolute whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1.5 text-sm text-white shadow-lg',
           positions[position].tooltip
         )}>
           {content}
           
           {showArrow && (
             <div className={cn(
-              'absolute h-2 w-2 rotate-45 bg-gray-900 dark:bg-gray-800',
+              'absolute h-2 w-2 rotate-45 bg-gray-900',
               positions[position].arrow
             )} />
           )}

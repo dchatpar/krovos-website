@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
 import { cn } from '@/lib/utils'
 
 interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -16,7 +16,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     id,
     ...props 
   }, ref) => {
-    const radioId = id || `radio-${Math.random().toString(36).substr(2, 9)}`
+    const generatedId = useId()
+    const radioId = id || `radio-${generatedId.replace(/:/g, '')}`
     
     return (
       <div className="space-y-2">
@@ -27,7 +28,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
               type="radio"
               id={radioId}
               className={cn(
-                'peer h-5 w-5 appearance-none rounded-full border border-gray-300 bg-white checked:border-primary-500 checked:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900',
+                'peer h-5 w-5 appearance-none rounded-full border border-gray-300 bg-white checked:border-primary-500 checked:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
                 error && 'border-red-500',
                 className
               )}
@@ -40,7 +41,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
           {label && (
             <label 
               htmlFor={radioId}
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer"
+              className="text-sm font-medium text-gray-700 cursor-pointer"
             >
               {label}
             </label>
@@ -50,7 +51,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {(error || helperText) && (
           <p className={cn(
             'text-sm pl-8',
-            error ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'
+            error ? 'text-red-600' : 'text-gray-500'
           )}>
             {error || helperText}
           </p>

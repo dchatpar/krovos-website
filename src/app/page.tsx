@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-import { ArrowRight, CheckCircle, Zap, Shield, BarChart, Users, Star, MessageSquare, Mail, Phone, MapPin, Cpu, Database, Workflow, Brain, Code, Headphones } from 'lucide-react'
+import { ArrowRight, Zap, Star, MessageSquare, Mail, Phone, MapPin, Cpu, Database, Workflow, Brain, Code, Headphones } from 'lucide-react'
 
 function useIsVisible(ref: React.RefObject<HTMLElement | null>) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    const node = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,13 +20,13 @@ function useIsVisible(ref: React.RefObject<HTMLElement | null>) {
       { threshold: 0.1 }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
+    if (node) {
+      observer.observe(node)
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
+      if (node) {
+        observer.unobserve(node)
       }
     }
   }, [ref])
@@ -106,7 +107,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         {/* Animated Gradient Background */}
@@ -119,28 +120,28 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary-500/10 px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-400">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary-500/10 px-4 py-2 text-sm font-medium text-primary-600">
               <Zap className="h-4 w-4" />
               Next-Gen Automation Platform
             </div>
             
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
               Automate Your Business Operations
               <span className="block bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 bg-clip-text text-transparent">
                 with Intelligent Automation
               </span>
             </h1>
             
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 dark:text-gray-300 sm:text-xl">
+            <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 sm:text-xl">
               AI-powered automation solutions that scale with your growth
             </p>
             
              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-               <Button size="lg" className="group">
+               <Button size="lg" href="/contact" className="group">
                  Get Started
                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                </Button>
-               <Button size="lg" variant="outline">
+               <Button size="lg" variant="outline" href="/services">
                  View Demo
                </Button>
              </div>
@@ -148,20 +149,20 @@ export default function Home() {
             {/* Stats */}
             <div className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">98%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Client Satisfaction</div>
+                <div className="text-3xl font-bold text-gray-900 sm:text-4xl">98%</div>
+                <div className="text-sm text-gray-600">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">40%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Cost Reduction</div>
+                <div className="text-3xl font-bold text-gray-900 sm:text-4xl">40%</div>
+                <div className="text-sm text-gray-600">Cost Reduction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">24/7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Automation Uptime</div>
+                <div className="text-3xl font-bold text-gray-900 sm:text-4xl">24/7</div>
+                <div className="text-sm text-gray-600">Automation Uptime</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">500+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Businesses Automated</div>
+                <div className="text-3xl font-bold text-gray-900 sm:text-4xl">500+</div>
+                <div className="text-sm text-gray-600">Businesses Automated</div>
               </div>
             </div>
           </div>
@@ -172,10 +173,10 @@ export default function Home() {
       <section ref={featuresRef} className="px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className={`text-center mb-16 transition-all duration-700 ${isFeaturesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Comprehensive Automation Solutions
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
               Everything you need to automate and optimize your business processes
             </p>
           </div>
@@ -184,7 +185,7 @@ export default function Home() {
             {features.map((feature, index) => (
                <Card 
                 key={index}
-                className={`group relative overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
+                className={`group relative overflow-hidden border border-gray-200 bg-white p-6 transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
                   isFeaturesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -192,17 +193,17 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 <div className="relative">
                   <div className={`mb-4 inline-flex rounded-lg bg-gradient-to-br ${feature.color} p-3`}>
-                    <div className="text-white">
+                    <div className="text-gray-900">
                       {feature.icon}
                     </div>
                   </div>
-                  <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="mb-2 text-xl font-semibold text-gray-900">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-600">
                     {feature.description}
                   </p>
-                  <div className="mt-4 flex items-center text-primary-600 dark:text-primary-400">
+                  <div className="mt-4 flex items-center text-primary-600">
                     <span className="text-sm font-medium">Learn more</span>
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -214,13 +215,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section ref={testimonialsRef} className="px-4 py-20 sm:px-6 lg:px-8 lg:py-32 bg-gray-50 dark:bg-gray-900/50">
+      <section ref={testimonialsRef} className="px-4 py-20 sm:px-6 lg:px-8 lg:py-32 bg-gray-50">
         <div className="mx-auto max-w-7xl">
           <div className={`text-center mb-16 transition-all duration-700 ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Trusted by Industry Leaders
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
               See what our clients say about their automation journey
             </p>
           </div>
@@ -229,7 +230,7 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={index} 
-                className={`relative overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 transition-all duration-500 ${
+                className={`relative overflow-hidden border border-gray-200 bg-white p-6 transition-all duration-500 ${
                   isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
@@ -241,7 +242,7 @@ export default function Home() {
                 </div>
                 
                  <div className="mb-4 flex items-center">
-                   <div className="mr-4 h-12 w-12 overflow-hidden rounded-full border-2 border-white dark:border-gray-800">
+                   <div className="mr-4 h-12 w-12 overflow-hidden rounded-full border-2 border-gray-200">
                      <img 
                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${testimonial.name.replace(/\s+/g, '')}`}
                        alt={testimonial.name}
@@ -249,29 +250,29 @@ export default function Home() {
                      />
                    </div>
                    <div>
-                     <h4 className="font-semibold text-gray-900 dark:text-white">
+                     <h4 className="font-semibold text-gray-900">
                        {testimonial.name}
                      </h4>
-                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                     <p className="text-sm text-gray-600">
                        {testimonial.role}
                      </p>
                    </div>
                  </div>
                 
-                <p className="mb-6 text-gray-700 dark:text-gray-300 italic">
+                <p className="mb-6 text-gray-700 italic">
                   "{testimonial.content}"
                 </p>
                 
-                 <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                 <div className="flex items-center justify-between border-t border-gray-100 pt-4">
                    <div className="flex items-center">
                      <div className="mr-2 h-6 w-6 rounded bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
-                       <span className="text-xs font-bold text-white">{testimonial.company.charAt(0)}</span>
+                       <span className="text-xs font-bold text-gray-900">{testimonial.company.charAt(0)}</span>
                      </div>
-                     <span className="text-sm font-medium text-gray-900 dark:text-white">
+                     <span className="text-sm font-medium text-gray-900">
                        {testimonial.company}
                      </span>
                    </div>
-                   <MessageSquare className="h-5 w-5 text-gray-400" />
+                   <MessageSquare className="h-5 w-5 text-gray-500" />
                  </div>
               </Card>
             ))}
@@ -284,10 +285,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2">
             <div className={`transition-all duration-700 ${isCtaVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Ready to Automate Your Success?
               </h2>
-              <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+              <p className="mt-4 text-lg text-gray-600">
                 Get in touch with our automation experts. We'll help you identify opportunities and build a customized automation strategy.
               </p>
               
@@ -295,77 +296,77 @@ export default function Home() {
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-primary-500" />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Email Us</h4>
-                    <p className="text-gray-600 dark:text-gray-400">contact@krovos.com</p>
+                    <h4 className="font-semibold text-gray-900">Email Us</h4>
+                    <p className="text-gray-600">contact@krovos.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
                   <Phone className="h-6 w-6 text-primary-500" />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Call Us</h4>
-                    <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+                    <h4 className="font-semibold text-gray-900">Call Us</h4>
+                    <p className="text-gray-600">+1 (555) 123-4567</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
                   <MapPin className="h-6 w-6 text-primary-500" />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Visit Us</h4>
-                    <p className="text-gray-600 dark:text-gray-400">123 Automation Street, San Francisco, CA</p>
+                    <h4 className="font-semibold text-gray-900">Visit Us</h4>
+                    <p className="text-gray-600">123 Automation Street, San Francisco, CA</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <Card className={`border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 transition-all duration-700 ${
+            <Card className={`border border-gray-200 bg-white p-6 transition-all duration-700 ${
               isCtaVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`} style={{ transitionDelay: '300ms' }}>
               <form className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Full Name
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                     placeholder="John Doe"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email Address
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                     placeholder="john@example.com"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700">
                     Company
                   </label>
                   <input
                     type="text"
                     id="company"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                     placeholder="Your Company"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                     Message
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                     placeholder="Tell us about your automation needs..."
                   />
                 </div>
@@ -375,7 +376,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 
-                <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-center text-sm text-gray-600">
                   By submitting, you agree to our Privacy Policy and Terms of Service
                 </p>
               </form>
@@ -390,14 +391,14 @@ export default function Home() {
           <h3 className="text-2xl font-bold text-white sm:text-3xl">
             Start Your Automation Journey Today
           </h3>
-          <p className="mx-auto mt-4 max-w-2xl text-primary-100">
+          <p className="mx-auto mt-4 max-w-2xl text-white/90">
             Join 500+ businesses that have transformed their operations with Krovos
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+            <Button size="lg" variant="outline" href="/contact" className="bg-gray-200 text-gray-900 border-gray-300 hover:bg-gray-300">
               Get Started Free
             </Button>
-            <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
+            <Button size="lg" href="/contact" className="bg-white text-primary-600 hover:bg-gray-100">
               Book a Demo
             </Button>
           </div>

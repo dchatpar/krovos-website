@@ -51,14 +51,14 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>(
           <hr
             ref={ref}
             className={cn(
-              'flex-1 border-gray-200 dark:border-gray-800',
+              'flex-1 border-gray-200',
               variants[variant],
               thickness === 'medium' ? 'border-t-2' : thickness === 'thick' ? 'border-t-4' : 'border-t'
             )}
           />
           
           <span className={cn(
-            'px-4 text-sm text-gray-500 dark:text-gray-400',
+            'px-4 text-sm text-gray-500',
             labelPositions[labelPosition]
           )}>
             {label}
@@ -66,7 +66,7 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>(
           
           <hr
             className={cn(
-              'flex-1 border-gray-200 dark:border-gray-800',
+              'flex-1 border-gray-200',
               variants[variant],
               thickness === 'medium' ? 'border-t-2' : thickness === 'thick' ? 'border-t-4' : 'border-t'
             )}
@@ -79,7 +79,7 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>(
       <hr
         ref={ref}
         className={cn(
-          'border-0 border-gray-200 dark:border-gray-800',
+          'border-0 border-gray-200',
           orientations[orientation],
           variants[variant],
           thicknesses[thickness],

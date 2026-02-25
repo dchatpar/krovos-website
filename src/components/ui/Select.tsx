@@ -1,4 +1,4 @@
-import { forwardRef, SelectHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, SelectHTMLAttributes, useId } from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronDown } from 'lucide-react'
 
@@ -29,9 +29,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     id,
     ...props 
   }, ref) => {
-    const selectId = id || `select-${Math.random().toString(36).substr(2, 9)}`
+    const generatedId = useId()
+    const selectId = id || `select-${generatedId.replace(/:/g, '')}`
     
-    const baseStyles = 'flex h-10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:ring-offset-gray-900 appearance-none'
+    const baseStyles = 'flex h-10 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none'
     
     const errorStyles = error ? 'border-red-500 focus:ring-red-500' : ''
     
@@ -40,7 +41,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label 
             htmlFor={selectId}
-            className="text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="text-sm font-medium text-gray-700"
           >
             {label}
           </label>
@@ -77,7 +78,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {(error || helperText) && (
           <p className={cn(
             'text-sm',
-            error ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'
+            error ? 'text-red-600' : 'text-gray-500'
           )}>
             {error || helperText}
           </p>

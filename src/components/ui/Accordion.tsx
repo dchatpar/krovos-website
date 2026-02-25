@@ -58,16 +58,16 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
             <div
               key={item.id}
               className={cn(
-                'rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden',
+                'rounded-lg border border-gray-200 overflow-hidden',
                 item.disabled && 'opacity-50 cursor-not-allowed'
               )}
             >
               <button
                 onClick={() => !item.disabled && handleItemClick(item.id)}
                 disabled={item.disabled}
-                className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
               >
-                <span className="font-medium text-gray-900 dark:text-white">
+                <span className="font-medium text-gray-900">
                   {item.title}
                 </span>
                 
@@ -83,7 +83,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
                   isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 )}
               >
-                <div className="p-4 pt-0 border-t border-gray-200 dark:border-gray-800">
+                <div className="p-4 pt-0 border-t border-gray-200">
                   {item.content}
                 </div>
               </div>

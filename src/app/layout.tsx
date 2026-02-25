@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
+import { HeaderEnhanced } from "@/components/layout/header-enhanced";
 import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({
@@ -50,9 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+      <body className="font-sans antialiased bg-white text-gray-900">
         <div className="min-h-screen flex flex-col">
-          <Header />
+          <HeaderEnhanced />
           <main className="flex-1">
             {children}
           </main>
@@ -62,3 +62,4 @@ export default function RootLayout({
     </html>
   );
 }
+

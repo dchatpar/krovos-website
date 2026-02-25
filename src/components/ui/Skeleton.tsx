@@ -25,7 +25,7 @@ const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
     
     const animations = {
       pulse: 'animate-pulse',
-      wave: 'animate-shimmer bg-gradient-to-r from-transparent via-gray-100 to-transparent dark:via-gray-800',
+      wave: 'animate-shimmer bg-gradient-to-r from-transparent via-gray-100 to-transparent via-gray-800',
       none: '',
     }
     
@@ -38,7 +38,7 @@ const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       <div
         ref={ref}
         className={cn(
-          'bg-gray-200 dark:bg-gray-800',
+          'bg-gray-200',
           variants[variant],
           animations[animation],
           className

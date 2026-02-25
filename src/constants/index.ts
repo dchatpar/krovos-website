@@ -105,19 +105,14 @@ export const NAVIGATION = {
     })),
     company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Press', href: '/press' },
       { name: 'Blog', href: '/blog' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
+      { name: 'Privacy Policy', href: '/contact' },
+      { name: 'Terms of Service', href: '/contact' },
     ],
     contact: [
       { name: 'Contact Us', href: '/contact' },
-      { name: 'Support', href: '/support' },
-      { name: 'Sales', href: '/sales' },
     ],
   },
 } as const

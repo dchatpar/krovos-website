@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
 import { cn } from '@/lib/utils'
 
 interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -9,7 +9,7 @@ interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ({ 
-    className,
+    className: _className,
     label,
     error,
     helperText,
@@ -17,7 +17,8 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     checked,
     ...props 
   }, ref) => {
-    const switchId = id || `switch-${Math.random().toString(36).substr(2, 9)}`
+    const generatedId = useId()
+    const switchId = id || `switch-${generatedId.replace(/:/g, '')}`
     
     return (
       <div className="space-y-2">
@@ -33,7 +34,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             />
             
             <div className={cn(
-              'peer h-6 w-11 rounded-full border border-gray-300 bg-gray-200 transition-colors duration-200 peer-checked:border-primary-500 peer-checked:bg-primary-500 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-500 peer-focus:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800',
+              'peer h-6 w-11 rounded-full border border-gray-300 bg-gray-200 transition-colors duration-200 peer-checked:border-primary-500 peer-checked:bg-primary-500 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-500 peer-focus:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
               error && 'border-red-500 peer-checked:border-red-500 peer-checked:bg-red-500'
             )}>
               <div className="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 peer-checked:translate-x-5" />
@@ -43,7 +44,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           {label && (
             <label 
               htmlFor={switchId}
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer"
+              className="text-sm font-medium text-gray-700 cursor-pointer"
             >
               {label}
             </label>
@@ -53,7 +54,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         {(error || helperText) && (
           <p className={cn(
             'text-sm pl-14',
-            error ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'
+            error ? 'text-red-600' : 'text-gray-500'
           )}>
             {error || helperText}
           </p>

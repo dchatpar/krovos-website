@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
 import { cn } from '@/lib/utils'
 import { Check } from 'lucide-react'
 
@@ -20,7 +20,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     checked,
     ...props 
   }, ref) => {
-    const checkboxId = id || `checkbox-${Math.random().toString(36).substr(2, 9)}`
+    const generatedId = useId()
+    const checkboxId = id || `checkbox-${generatedId.replace(/:/g, '')}`
     
     return (
       <div className="space-y-2">
@@ -31,7 +32,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               type="checkbox"
               id={checkboxId}
               className={cn(
-                'peer h-5 w-5 appearance-none rounded border border-gray-300 bg-white checked:border-primary-500 checked:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900',
+                'peer h-5 w-5 appearance-none rounded border border-gray-300 bg-white checked:border-primary-500 checked:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
                 error && 'border-red-500',
                 className
               )}
@@ -49,7 +50,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {label && (
             <label 
               htmlFor={checkboxId}
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer"
+              className="text-sm font-medium text-gray-700 cursor-pointer"
             >
               {label}
             </label>
@@ -59,7 +60,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {(error || helperText) && (
           <p className={cn(
             'text-sm pl-8',
-            error ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'
+            error ? 'text-red-600' : 'text-gray-500'
           )}>
             {error || helperText}
           </p>

@@ -27,8 +27,10 @@ export function truncateText(text: string, maxLength: number) {
   return text.slice(0, maxLength).trim() + '...'
 }
 
+let idCounter = 0
 export function generateId() {
-  return Math.random().toString(36).substring(2, 9)
+  idCounter++
+  return `id-${idCounter}`
 }
 
 export function debounce<T extends (...args: any[]) => any>(

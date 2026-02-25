@@ -66,7 +66,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         {...props}
       >
         <div className={cn(
-          'overflow-hidden bg-gray-200 dark:bg-gray-800 flex items-center justify-center',
+          'overflow-hidden bg-gray-200 flex items-center justify-center',
           sizes[size],
           shapes[shape]
         )}>
@@ -87,7 +87,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         
         {status && (
           <div className={cn(
-            'absolute rounded-full border-2 border-white dark:border-gray-900',
+            'absolute rounded-full border-2 border-white',
             statusPositions[statusPosition],
             statusSizes[size],
             statusColors[status]

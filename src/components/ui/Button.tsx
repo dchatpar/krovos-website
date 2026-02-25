@@ -1,14 +1,16 @@
 import { forwardRef, ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
+import Link from 'next/link'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'danger'
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'danger' | 'gradient'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   loading?: boolean
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   fullWidth?: boolean
+  href?: string
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,6 +24,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     fullWidth = false,
     disabled,
     children,
+    href,
     ...props 
   }, ref) => {
     const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
@@ -30,8 +33,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 active:bg-primary-700',
       secondary: 'bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500 active:bg-secondary-700',
       accent: 'bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500 active:bg-accent-700',
+      gradient: 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white hover:from-primary-600 hover:to-secondary-600 focus:ring-primary-500',
       outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-50 focus:ring-primary-500 active:bg-primary-100',
-      ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500 active:bg-gray-200',
+      ghost: 'text-gray-600 hover:bg-gray-100 focus:ring-gray-400 active:bg-gray-200',
       danger: 'bg-red-500 text-white hover:bg-red-600 focus:ring-red-500 active:bg-red-700',
     }
     
@@ -51,19 +55,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       xl: 'h-5 w-5',
     }
     
-    return (
-      <button
-        ref={ref}
-        className={cn(
-          baseStyles,
-          variants[variant],
-          sizes[size],
-          fullWidth && 'w-full',
-          className
-        )}
-        disabled={disabled || loading}
-        {...props}
-      >
+    const buttonContent = (
+      <>
         {loading && (
           <Loader2 className={cn('animate-spin', iconSizes[size], children ? 'mr-2' : '')} />
         )}
@@ -78,6 +71,33 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             {rightIcon}
           </span>
         )}
+      </>
+    )
+
+    const buttonClassName = cn(
+      baseStyles,
+      variants[variant],
+      sizes[size],
+      fullWidth && 'w-full',
+      className
+    )
+
+    if (href && !loading && !disabled) {
+      return (
+        <Link href={href} className={buttonClassName}>
+          {buttonContent}
+        </Link>
+      )
+    }
+    
+    return (
+      <button
+        ref={ref}
+        className={buttonClassName}
+        disabled={disabled || loading}
+        {...props}
+      >
+        {buttonContent}
       </button>
     )
   }

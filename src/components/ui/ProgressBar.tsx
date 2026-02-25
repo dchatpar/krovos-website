@@ -28,17 +28,17 @@ const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100)
     
     const variants = {
-      default: 'bg-gray-200 dark:bg-gray-800',
-      primary: 'bg-primary-200 dark:bg-primary-900/30',
-      secondary: 'bg-secondary-200 dark:bg-secondary-900/30',
-      accent: 'bg-accent-200 dark:bg-accent-900/30',
-      success: 'bg-green-200 dark:bg-green-900/30',
-      warning: 'bg-yellow-200 dark:bg-yellow-900/30',
-      error: 'bg-red-200 dark:bg-red-900/30',
+      default: 'bg-gray-200',
+      primary: 'bg-primary-200',
+      secondary: 'bg-secondary-200',
+      accent: 'bg-accent-200',
+      success: 'bg-green-200',
+      warning: 'bg-yellow-200',
+      error: 'bg-red-200',
     }
     
     const fillVariants = {
-      default: 'bg-gray-600 dark:bg-gray-400',
+      default: 'bg-gray-600 bg-gray-400',
       primary: 'bg-primary-500',
       secondary: 'bg-secondary-500',
       accent: 'bg-accent-500',

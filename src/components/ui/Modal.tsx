@@ -47,16 +47,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
         <div
           ref={ref}
           className={cn(
-            'relative w-full rounded-xl bg-white shadow-2xl dark:bg-gray-900 animate-scale-in',
+            'relative w-full rounded-xl bg-white shadow-2xl animate-scale-in',
             sizes[size],
             className
           )}
           {...props}
         >
           {(title || showCloseButton) && (
-            <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 px-6 py-4">
+            <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
               {title && (
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h2 className="text-xl font-semibold text-gray-900">
                   {title}
                 </h2>
               )}
@@ -64,7 +64,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300 transition-colors"
+                  className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="h-5 w-5" />

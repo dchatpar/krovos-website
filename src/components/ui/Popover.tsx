@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, ReactNode, useState, useRef, useEffect } from 'react'
+import { forwardRef, HTMLAttributes, ReactNode, useCallback, useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { createPortal } from 'react-dom'
 
@@ -24,8 +24,8 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     onOpenChange,
     triggerOn = 'click',
     showArrow = true,
-    ...props 
-  }, ref) => {
+    ..._props 
+  }, _ref) => {
     const [uncontrolledOpen, setUncontrolledOpen] = useState(false)
     const triggerRef = useRef<HTMLDivElement>(null)
     const popoverRef = useRef<HTMLDivElement>(null)
@@ -33,12 +33,12 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const isControlled = controlledOpen !== undefined
     const open = isControlled ? controlledOpen : uncontrolledOpen
     
-    const setOpen = (value: boolean) => {
+    const setOpen = useCallback((value: boolean) => {
       if (!isControlled) {
         setUncontrolledOpen(value)
       }
       onOpenChange?.(value)
-    }
+    }, [isControlled, onOpenChange])
     
     const handleTriggerClick = () => {
       if (triggerOn === 'click') {
@@ -73,7 +73,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       
       document.addEventListener('mousedown', handleClickOutside)
       return () => document.removeEventListener('mousedown', handleClickOutside)
-    }, [open])
+    }, [open, setOpen])
     
     const positions = {
       top: {
@@ -110,7 +110,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         }}
       >
         <div className={cn(
-          'absolute rounded-lg bg-white shadow-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-800 p-4',
+          'absolute rounded-lg bg-white shadow-lg border border-gray-200 p-4',
           positions[position].popover,
           aligns[align],
           className
@@ -119,7 +119,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           
           {showArrow && (
             <div className={cn(
-              'absolute h-2 w-2 rotate-45 bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800',
+              'absolute h-2 w-2 rotate-45 bg-white border border-gray-200',
               positions[position].arrow
             )} />
           )}

@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, ReactNode, useEffect, useState } from 'react'
+import { forwardRef, HTMLAttributes, useCallback, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { X, CheckCircle, AlertCircle, Info, XCircle } from 'lucide-react'
 import { createPortal } from 'react-dom'
@@ -29,6 +29,13 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
   }, ref) => {
     const [isExiting, setIsExiting] = useState(false)
     
+    const handleClose = useCallback(() => {
+      setIsExiting(true)
+      setTimeout(() => {
+        onClose(id)
+      }, 300)
+    }, [id, onClose])
+    
     useEffect(() => {
       if (duration > 0) {
         const timer = setTimeout(() => {
@@ -37,49 +44,42 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
         
         return () => clearTimeout(timer)
       }
-    }, [duration])
-    
-    const handleClose = () => {
-      setIsExiting(true)
-      setTimeout(() => {
-        onClose(id)
-      }, 300)
-    }
+    }, [duration, handleClose])
     
     const variants = {
       default: {
-        container: 'bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-800',
+        container: 'bg-white border-gray-200',
         icon: 'text-gray-400',
-        title: 'text-gray-900 dark:text-white',
-        message: 'text-gray-600 dark:text-gray-300',
+        title: 'text-gray-900',
+        message: 'text-gray-600',
         iconComponent: Info,
       },
       success: {
-        container: 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800/30',
+        container: 'bg-green-50 border-green-200',
         icon: 'text-green-500',
-        title: 'text-green-900 dark:text-green-300',
-        message: 'text-green-800 dark:text-green-400',
+        title: 'text-green-900',
+        message: 'text-green-800',
         iconComponent: CheckCircle,
       },
       warning: {
-        container: 'bg-yellow-50 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-800/30',
+        container: 'bg-yellow-50 border-yellow-200',
         icon: 'text-yellow-500',
-        title: 'text-yellow-900 dark:text-yellow-300',
-        message: 'text-yellow-800 dark:text-yellow-400',
+        title: 'text-yellow-900',
+        message: 'text-yellow-800',
         iconComponent: AlertCircle,
       },
       error: {
-        container: 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800/30',
+        container: 'bg-red-50 border-red-200',
         icon: 'text-red-500',
-        title: 'text-red-900 dark:text-red-300',
-        message: 'text-red-800 dark:text-red-400',
+        title: 'text-red-900',
+        message: 'text-red-800',
         iconComponent: XCircle,
       },
       info: {
-        container: 'bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800/30',
+        container: 'bg-blue-50 border-blue-200',
         icon: 'text-blue-500',
-        title: 'text-blue-900 dark:text-blue-300',
-        message: 'text-blue-800 dark:text-blue-400',
+        title: 'text-blue-900',
+        message: 'text-blue-800',
         iconComponent: Info,
       },
     }
@@ -127,7 +127,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
             {showCloseButton && (
               <button
                 onClick={handleClose}
-                className="ml-4 -mt-1 -mr-2 flex h-8 w-8 items-center justify-center rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300 transition-colors"
+                className="ml-4 -mt-1 -mr-2 flex h-8 w-8 items-center justify-center rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-colors"
                 aria-label="Close toast"
               >
                 <X className="h-4 w-4" />
@@ -136,7 +136,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
           </div>
           
           {duration > 0 && (
-            <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-800">
+            <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-gray-200">
               <div 
                 className={cn(
                   'h-full rounded-full transition-all duration-300',

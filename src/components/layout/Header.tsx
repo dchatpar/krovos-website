@@ -42,13 +42,13 @@ export function Header() {
   }
   
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/80">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-lg bg-gradient-krovos" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
+              <span className="text-xl font-bold text-gray-900">
                 Krovos
               </span>
             </Link>
@@ -56,12 +56,17 @@ export function Header() {
           
           <nav className="hidden md:flex items-center space-x-8">
             {NAVIGATION.main.map((item) => (
-              <div key={item.name} className="relative">
+              <div 
+                key={item.name} 
+                className="relative group"
+                onMouseEnter={() => item.name === 'Services' && setOpenDropdown('services')}
+                onMouseLeave={() => item.name === 'Services' && setOpenDropdown(null)}
+              >
                 {item.name === 'Services' ? (
                   <div className="relative">
                     <button
                       onClick={() => handleDropdownToggle('services')}
-                      className="flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors"
+                      className="flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
                     >
                       <span>{item.name}</span>
                       <ChevronDown className={cn(
@@ -77,13 +82,13 @@ export function Header() {
                           animate="open"
                           exit="closed"
                           variants={dropdownVariants}
-                          className="absolute left-0 top-full mt-2 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-800 dark:bg-gray-900"
+                          className="absolute left-0 top-full mt-2 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-lg"
                         >
                           {NAVIGATION.services.map((service) => (
                             <Link
                               key={service.name}
                               href={service.href}
-                              className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+                              className="block rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                               onClick={() => setOpenDropdown(null)}
                             >
                               {service.name}
@@ -96,7 +101,7 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors"
+                    className="text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -116,7 +121,7 @@ export function Header() {
           
           <button
             onClick={toggleMenu}
-            className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 md:hidden"
+            className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 md:hidden"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -143,7 +148,7 @@ export function Header() {
                       <div className="space-y-1">
                         <button
                           onClick={() => handleDropdownToggle('mobile-services')}
-                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
                         >
                           <span>{item.name}</span>
                           <ChevronDown className={cn(
@@ -159,13 +164,13 @@ export function Header() {
                               animate="open"
                               exit="closed"
                               variants={dropdownVariants}
-                              className="ml-4 space-y-1 border-l border-gray-200 pl-4 dark:border-gray-800"
+                              className="ml-4 space-y-1 border-l border-gray-200 pl-4"
                             >
                               {NAVIGATION.services.map((service) => (
                                 <Link
                                   key={service.name}
                                   href={service.href}
-                                  className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+                                  className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100"
                                   onClick={closeMenu}
                                 >
                                   {service.name}
@@ -178,7 +183,7 @@ export function Header() {
                     ) : (
                       <Link
                         href={item.href}
-                        className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
                         onClick={closeMenu}
                       >
                         {item.name}

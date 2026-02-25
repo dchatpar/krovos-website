@@ -63,7 +63,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         <div
           ref={ref}
           className={cn(
-            'absolute bg-white shadow-2xl dark:bg-gray-900',
+            'absolute bg-white shadow-2xl',
             positions[position],
             sizes[size],
             animations[position],
@@ -72,9 +72,9 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
           {...props}
         >
           {(title || showCloseButton) && (
-            <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 px-6 py-4">
+            <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
               {title && (
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h2 className="text-xl font-semibold text-gray-900">
                   {title}
                 </h2>
               )}
@@ -82,7 +82,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300 transition-colors"
+                  className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-500 transition-colors"
                   aria-label="Close drawer"
                 >
                   <X className="h-5 w-5" />

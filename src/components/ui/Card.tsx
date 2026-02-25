@@ -20,10 +20,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     const baseStyles = 'rounded-xl transition-all duration-300'
     
     const variants = {
-      default: 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800',
-      elevated: 'bg-white dark:bg-gray-900 shadow-lg border border-gray-100 dark:border-gray-800',
-      outline: 'border-2 border-primary-500',
-      interactive: 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 cursor-pointer',
+      default: 'bg-white border border-gray-200 shadow-card',
+      elevated: 'bg-white border border-gray-100 shadow-elevated',
+      outline: 'border-2 border-primary-500 bg-white',
+      interactive: 'bg-white border border-gray-200 shadow-card cursor-pointer',
     }
     
     const paddings = {
@@ -33,7 +33,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       lg: 'p-8',
     }
     
-    const hoverStyles = hoverEffect ? 'hover:shadow-xl hover:-translate-y-1 hover:border-primary-300 dark:hover:border-primary-700' : ''
+    const hoverStyles = hoverEffect ? 'hover:shadow-card-hover hover:-translate-y-0.5 hover:border-gray-300' : ''
     
     return (
       <div
@@ -99,7 +99,7 @@ const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(
   ({ className, children, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn('text-sm text-gray-500 dark:text-gray-400', className)}
+      className={cn('text-sm text-gray-500', className)}
       {...props}
     >
       {children}

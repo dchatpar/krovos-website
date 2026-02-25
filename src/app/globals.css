@@ -62,10 +62,14 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #111827;
-  --primary: #0ea5e9;
-  --secondary: #a855f7;
-  --accent: #f97316;
+  --foreground: #18181b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #64748b;
+  --accent: #22c55e;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
 }
 
 @theme inline {
@@ -75,12 +79,7 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #030712;
-    --foreground: #f9fafb;
-  }
-}
+/* Light theme only - no dark mode override */
 
 body {
   background: var(--background);
@@ -100,21 +99,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0ea5e9;
+  background: #94a3b8;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284c7;
+  background: #64748b;
 }
 
 ::selection {
-  background-color: rgba(14, 165, 233, 0.3);
+  background-color: rgba(37, 99, 235, 0.15);
   color: inherit;
 }
 
 :focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
 

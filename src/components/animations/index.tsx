@@ -224,7 +224,7 @@ interface MagneticButtonProps {
 export function MagneticButton({ 
   children, 
   className,
-  strength = 0.5 
+  strength: _strength = 0.5
 }: MagneticButtonProps) {
   return (
     <motion.div

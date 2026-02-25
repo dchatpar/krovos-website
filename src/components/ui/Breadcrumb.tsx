@@ -53,7 +53,7 @@ const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-1 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors'
+                    'flex items-center space-x-1 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors'
                   )}
                 >
                   {item.icon && <span>{item.icon}</span>}
@@ -64,8 +64,8 @@ const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(
                   className={cn(
                     'flex items-center space-x-1 text-sm font-medium',
                     isLast 
-                      ? 'text-gray-900 dark:text-white' 
-                      : 'text-gray-500 dark:text-gray-400'
+                      ? 'text-gray-900 text-white' 
+                      : 'text-gray-500 text-gray-400'
                   )}
                   aria-current={isLast ? 'page' : undefined}
                 >

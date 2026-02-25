@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, useId, InputHTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -23,9 +23,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     id,
     ...props 
   }, ref) => {
-    const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`
+    const generatedId = useId()
+    const inputId = id || `input-${generatedId.replace(/:/g, '')}`
     
-    const baseStyles = 'flex h-10 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:ring-offset-gray-900 dark:placeholder:text-gray-400'
+    const baseStyles = 'flex h-10 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
     
     const errorStyles = error ? 'border-red-500 focus-visible:ring-red-500' : ''
     
@@ -36,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label 
             htmlFor={inputId}
-            className="text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="text-sm font-medium text-gray-700"
           >
             {label}
           </label>
@@ -74,7 +75,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {(error || helperText) && (
           <p className={cn(
             'text-sm',
-            error ? 'text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'
+            error ? 'text-red-600' : 'text-gray-500'
           )}>
             {error || helperText}
           </p>

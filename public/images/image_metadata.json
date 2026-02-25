@@ -1,0 +1,16 @@
+{
+  "total_images": 0,
+  "categories": [
+    "hero",
+    "services",
+    "team",
+    "office",
+    "automation",
+    "development",
+    "blog",
+    "contact"
+  ],
+  "timestamp": 1769872526.665342,
+  "website": "Krovos Business Automation",
+  "description": "Scraped images for website pages"
+}
