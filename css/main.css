@@ -12,6 +12,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body.nav--open {
@@ -633,18 +635,19 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
-.case-studies__carousel {
-  display: flex;
-  gap: 24px;
-  margin-top: 60px;
+.case-studies .container {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 
-.case-studies__carousel::-webkit-scrollbar {
-  display: none;
+.case-studies__carousel {
+  display: flex;
+  gap: 24px;
+  margin-top: 60px;
+  min-width: min-content;
 }
 
 .case-card {
@@ -1264,10 +1267,25 @@ textarea:focus-visible {
   .service-detail {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding: 60px 0;
   }
 
   .service-detail:nth-child(even) {
     direction: ltr;
+  }
+
+  .service-detail__visual {
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-detail {
+    padding: 40px 0;
+  }
+
+  .service-detail__features {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1410,3 +1428,192 @@ textarea:focus-visible {
 .text-center { text-align: center; }
 .mt-60 { margin-top: 60px; }
 .mb-40 { margin-bottom: 40px; }
+
+/* ---------- RESPONSIVE MOBILE ---------- */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .page-header {
+    padding: 120px 0 60px;
+  }
+
+  .page-header__subtitle {
+    font-size: 1rem;
+  }
+
+  .stats {
+    padding: 40px 0;
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .stats__number {
+    font-size: 2rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: var(--nav-height);
+  }
+
+  .hero__inner {
+    padding: 60px 0;
+  }
+
+  .hero__badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero__visual {
+    display: none;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .section__title {
+    font-size: 1.75rem;
+  }
+
+  .section__subtitle {
+    font-size: 1rem;
+  }
+
+  .cta-section {
+    padding: 60px 0;
+  }
+
+  .cta-section__title {
+    font-size: 1.75rem;
+  }
+
+  .cta-section__subtitle {
+    font-size: 1rem;
+  }
+
+  .footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
+
+  /* About page responsive */
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-card__avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 1.75rem;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .about-story-grid > *:last-child {
+    display: none;
+  }
+
+  /* About page responsive */
+  .about-global-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Services page responsive */
+  .service-detail__visual {
+    height: 200px;
+  }
+
+  /* Contact page responsive */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+
+  .response-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .global__map {
+    height: 250px;
+  }
+
+  .global__offices {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  .page-header__title {
+    font-size: 1.75rem;
+  }
+
+  .stats__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stats__number {
+    font-size: 1.75rem;
+  }
+
+  .case-card {
+    min-width: 280px;
+  }
+}
