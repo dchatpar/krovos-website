@@ -20,7 +20,10 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+}
+
+body.nav--open {
+  overflow: hidden;
 }
 
 img, video {
@@ -67,6 +70,21 @@ ul, ol {
   --container-padding: 24px;
 
   --nav-height: 72px;
+}
+
+/* ---------- FOCUS STYLES ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* ---------- SKIP LINK ---------- */

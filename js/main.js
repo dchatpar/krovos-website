@@ -17,16 +17,18 @@ function initNav() {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('nav--open');
+    document.body.classList.toggle('nav--open');
 
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', !expanded);
   });
 
   // Close nav when clicking a link
-  navLinks.querySelectorAll('.nav__link').forEach(link => {
+  navLinks.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navLinks.classList.remove('nav--open');
+      document.body.classList.remove('nav--open');
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
@@ -36,6 +38,7 @@ function initNav() {
     if (window.innerWidth > 768) {
       hamburger.classList.remove('active');
       navLinks.classList.remove('nav--open');
+      document.body.classList.remove('nav--open');
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
