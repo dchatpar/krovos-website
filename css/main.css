@@ -20,6 +20,7 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img, video {
@@ -276,7 +277,7 @@ ul, ol {
     transition: transform var(--transition);
   }
 
-  .nav__links.active {
+  .nav__links.nav--open {
     transform: translateX(0);
   }
 

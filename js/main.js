@@ -16,7 +16,7 @@ function initNav() {
 
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    navLinks.classList.toggle('nav--open');
 
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', !expanded);
@@ -26,7 +26,7 @@ function initNav() {
   navLinks.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+      navLinks.classList.remove('nav--open');
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
@@ -35,7 +35,7 @@ function initNav() {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
       hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+      navLinks.classList.remove('nav--open');
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
