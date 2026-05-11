@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Krovos Inc. — Get in touch with our global team. Offices in San Francisco, London, and Singapore. Email info@krovos.com or call +1 (415) 555-1234.">
+  <title>Contact Us — Krovos Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Krovos Home">
+        <span class="nav__logo-mark">K</span>
+        Krovos
+      </a>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="services.html" class="nav__link">Services</a></li>
+        <li><a href="contact.html" class="nav__link active">Contact</a></li>
+        <li><a href="contact.html" class="nav__cta">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- PAGE HEADER -->
+    <header class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title" class="page-header__title">Contact Us</h1>
+        <p class="page-header__subtitle">
+          Ready to transform your enterprise? Let's start the conversation.
+        </p>
+      </div>
+    </header>
+
+    <!-- CONTACT CONTENT -->
+    <section class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section__title fade-up">Get in Touch</h2>
+        <p class="section__subtitle fade-up">
+          Tell us about your project or challenges. Our team typically responds within 24 hours.
+        </p>
+        <div class="contact-grid">
+          <form class="contact-form fade-up" action="#" method="POST" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your company name">
+            </div>
+            <div class="form-group">
+              <label for="email">Work Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option value="ai">AI & Automation</option>
+                <option value="software">Custom Software</option>
+                <option value="marketing">Digital Marketing</option>
+                <option value="it">Managed IT</option>
+                <option value="talent">Talent Solutions</option>
+                <option value="logistics">Logistics Tech</option>
+                <option value="multiple">Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your project or challenges..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width: 100%;">Send Message</button>
+          </form>
+
+          <div class="contact-info">
+            <div class="contact-info-card fade-up">
+              <h3 class="contact-info-card__title">Email & Phone</h3>
+              <div class="contact-info-card__item">
+                <div class="contact-info-card__icon" aria-hidden="true">✉️</div>
+                <div class="contact-info-card__text">
+                  <strong>Email</strong><br>
+                  <a href="mailto:info@krovos.com">info@krovos.com</a>
+                </div>
+              </div>
+              <div class="contact-info-card__item">
+                <div class="contact-info-card__icon" aria-hidden="true">📞</div>
+                <div class="contact-info-card__text">
+                  <strong>Phone</strong><br>
+                  <a href="tel:+14155551234">+1 (415) 555-1234</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-card fade-up fade-up-delay-1">
+              <h3 class="contact-info-card__title">San Francisco (HQ)</h3>
+              <div class="contact-info-card__item">
+                <div class="contact-info-card__icon" aria-hidden="true">🏢</div>
+                <div class="contact-info-card__text">
+                  525 Market Street<br>
+                  Suite 3100<br>
+                  San Francisco, CA 94105<br>
+                  United States
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-card fade-up fade-up-delay-2">
+              <h3 class="contact-info-card__title">Global Offices</h3>
+              <div class="contact-info-card__item">
+                <div class="contact-info-card__icon" aria-hidden="true">🇬🇧</div>
+                <div class="contact-info-card__text">
+                  <strong>London</strong><br>
+                  1 Canada Square, Level 37<br>
+                  Canary Wharf, London E14 5AB
+                </div>
+              </div>
+              <div class="contact-info-card__item">
+                <div class="contact-info-card__icon" aria-hidden="true">🇸🇬</div>
+                <div class="contact-info-card__text">
+                  <strong>Singapore</strong><br>
+                  1 Raffles Place, Tower 2<br>
+                  #45-01, Singapore 048616
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPONSE TIME -->
+    <section class="section section--alt text-center" aria-labelledby="response-title">
+      <div class="container" style="max-width: 700px;">
+        <p class="section__label fade-up">Response Guarantee</p>
+        <h2 id="response-title" class="section__title fade-up">We Respond Quickly</h2>
+        <p class="section__subtitle fade-up" style="margin: 0 auto;">
+          Every inquiry is routed to the right team member. Enterprise inquiries receive priority handling with guaranteed response times.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
+          <div class="fade-up">
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">2 hrs</div>
+            <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 8px;">Business Inquiries</div>
+          </div>
+          <div class="fade-up fade-up-delay-1">
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">4 hrs</div>
+            <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 8px;">Technical Support</div>
+          </div>
+          <div class="fade-up fade-up-delay-2">
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">24/7</div>
+            <div style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 8px;">Enterprise Clients</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="nav__logo" style="color: white;">
+            <span class="nav__logo-mark">K</span>
+            Krovos
+          </a>
+          <p class="footer__brand-desc">
+            Enterprise technology solutions for a complex world. We help organizations innovate faster, scale smarter, and compete globally through integrated digital transformation.
+          </p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Services</h3>
+          <ul class="footer__links">
+            <li><a href="services.html#ai" class="footer__link">AI & Automation</a></li>
+            <li><a href="services.html#software" class="footer__link">Custom Software</a></li>
+            <li><a href="services.html#marketing" class="footer__link">Digital Marketing</a></li>
+            <li><a href="services.html#it" class="footer__link">Managed IT</a></li>
+            <li><a href="services.html#talent" class="footer__link">Talent Solutions</a></li>
+            <li><a href="services.html#logistics" class="footer__link">Logistics Tech</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Company</h3>
+          <ul class="footer__links">
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="about.html#leadership" class="footer__link">Leadership</a></li>
+            <li><a href="about.html#values" class="footer__link">Our Values</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Contact</h3>
+          <ul class="footer__links">
+            <li><a href="mailto:info@krovos.com" class="footer__link">info@krovos.com</a></li>
+            <li><a href="tel:+14155551234" class="footer__link">+1 (415) 555-1234</a></li>
+            <li><a href="index.html" class="footer__link">krovos.ca</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Krovos Inc. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">X</a>
+          <a href="#" class="footer__social-link" aria-label="GitHub">gh</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Message Sent!';
+      btn.disabled = true;
+      setTimeout(() => {
+        form.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
